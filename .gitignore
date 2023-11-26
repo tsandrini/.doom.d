@@ -9,3 +9,21 @@
 
 # Undo-tree save-files
 *.~undo-tree
+
+# nix
+*.sw?
+.vim/backup/*
+.vim/tmp/*
+.vim/undos/
+.vim/plugged/
+result/
+build/
+
+result
+.direnv/
+.devenv/
+
+.devcontainer.json
+.pre-commit-config.yaml
+
+tsandrini*
