@@ -1,21 +1,22 @@
-# Compiled
-*.elc
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+ehthumbs.db
+Icon?
+Thumbs.db
 
-# Packaging
-.cask
+# IDEA Ignores #
+################
+*.iml
+*.ipr
+*.iws
+.idea/
+out/
+local.properties
 
-# Backup files
-*~
-
-# Undo-tree save-files
-*.~undo-tree
-
-# nix
-*.sw?
-.vim/backup/*
-.vim/tmp/*
-.vim/undos/
-.vim/plugged/
+# Project related #
+################
 result/
 build/
 
@@ -25,5 +26,3 @@ result
 
 .devcontainer.json
 .pre-commit-config.yaml
-
-tsandrini*

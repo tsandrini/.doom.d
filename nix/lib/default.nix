@@ -10,12 +10,12 @@
 
   bootstrap = import ./_bootstrap-lib.nix {inherit lib;};
 
-  doom-emacs = lib.makeExtensible (self:
+  doom-d = lib.makeExtensible (self:
     with self;
       mapModules' ./. (file:
         import file {
           inherit pkgs lib self inputs projectPath;
         }));
 in
-  doom-emacs.extend
+  doom-d.extend
   (_self: super: lib.foldr (a: b: a // b) {} (lib.attrValues super))

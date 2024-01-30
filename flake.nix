@@ -1,5 +1,5 @@
 {
-  description = "doom-emacs - TODO Add a description of your new project";
+  description = "doom-d - TODO Add a description of your new project";
 
   inputs = {
     # Base dependencies
@@ -19,19 +19,25 @@
     # Project specific dependencies
   };
 
-  # Here you can add additional binary cache substituers that you trust
+  # Here you can add additional binary cache substituers that you trust.
+  # There are also some sensible default caches commented out that you
+  # might consider using.
   nixConfig = {
     extra-trusted-public-keys = [
-      "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+      # "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+      # "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      # "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
     extra-substituters = [
-      "https://devenv.cachix.org"
+      # "https://devenv.cachix.org"
+      # "https://cache.nixos.org"
+      # "https://nix-community.cachix.org/"
     ];
   };
 
   outputs = inputs @ {flake-parts, ...}: let
     inherit (inputs) nixpkgs;
-    inherit (lib.doom-emacs) mapModules mkNixpkgs flatten;
+    inherit (lib.doom-d) mapModules flatten;
 
     # You should ideally use relative paths in each individual part from ./parts,
     # however, if needed you can use the `projectPath` variable that is passed
@@ -43,7 +49,7 @@
     # to override. This instance is then passed to every part in ./parts so that
     # you can use it in your custom modules
     lib = nixpkgs.lib.extend (self: _super: {
-      doom-emacs = import ./nix/lib {
+      doom-d = import ./nix/lib {
         inherit inputs projectPath;
         pkgs = nixpkgs;
         lib = self;
@@ -79,17 +85,17 @@
       #
       # `systems = (import inputs.systems) ++ [ "armv7l-linux" ];`
       systems = import inputs.systems;
-      flake.lib = lib.doom-emacs;
+      flake.lib = lib.doom-d;
 
-      # Finally, we bootstrap the `pkgs` argument to use our custom nixpkgs
-      # instance bootstrapped with overlays, loaded system and other defaults.
-      # For more info refer to `lib/modules.nix:mkNixpkgs`
-      perSystem = {
-        system,
-        pkgs,
-        ...
-      }: {
-        _module.args.pkgs = mkNixpkgs nixpkgs system [];
-      };
+      # Since the official flakes output schema is unfortunately very limited
+      # you can enable the debug mode if you need to inspect certain outputs
+      # of your flake. Simply
+      #
+      # 1. uncomment the following line
+      # 2. hop into a repl from the project root - `nix repl`
+      # 3. load the flake - `:lf .`
+      #
+      # After that you can inspect the flake from the root attribute `debug.flake`
+      # debug = true;
     };
 }
