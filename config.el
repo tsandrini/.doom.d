@@ -62,7 +62,7 @@
 ;; Bug on close
 (setq x-select-enable-clipboard-manager nil)
 
-; Set default dictionary
+                                        ; Set default dictionary
 (setq ispell-dictionary "english")
 
 ;; Auto-reload PDF files
@@ -162,68 +162,67 @@
       (:after ibuffer :mn "," #'evil-avy-goto-char-2)
       (:after magit :mn "K" #'+workspace/switch-right))
 
-(use-package! org-roam
-  :ensure t
-  :init
-  :custom
-  (org-roam-directory "~/org/")
-  (org-roam-complete-everywhere t)
-  (org-roam-capture-templates
-   '(("d" "default" plain (file "~/org/templates/default_template.org")
-      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+date: %U\n#+author: tsandrini\n")
-      :unnarrowed t)
-     ("w" "wiki" plain (file "~/org/templates/wiki_template.org")
-      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: :Wiki:\n#+date: %U\n#+author: tsandrini\n")
-      :unnarrowed t)
-     ("f" "definition" plain (file "~/org/templates/definition_template.org")
-      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: :Definition:Wiki:\n#+date: %U\n#+author: tsandrini\n")
-      :unnarrowed t)
-     ("h" "theorem" plain (file "~/org/templates/theorem_template.org")
-      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: :Theorem:Wiki:\n#+date: %U\n#+author: tsandrini\n")
-      :unnarrowed t)
-     ;; ("a" "axiom" plain (file "~/org/templates/axiom_template.org")
-     ;;  :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: :Axiom:Wiki:\n#+date: %U\n#+author: tsandrini\n")
-     ;;  :unnarrowed t)
-     ("a" "algorithm" plain (file "~/org/templates/algorithm_template.org")
-      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: :Algorithm:Wiki:ComputerScience:\n#+date: %U\n#+author: tsandrini\n")
-      :unnarrowed t)
-     ("e" "attachment" plain (file "~/org/templates/attachment_template.org")
-      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: :Attachment:\n#+date: %U\n#+author: tsandrini\n")
-      :unnarrowed t)
-     ;; ("r" "reading" plain (file "~/org/templates/reading_template.org")
-     ;;  :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: :Reading:Attachment:\n#+date: %U\n#+author: tsandrini\n")
-     ;;  :unnarrowed t)
-     ;; ("g" "watching" plain (file "~/org/templates/watching_template.org")
-     ;;  :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: :Watching:Attachment:\n#+date: %U\n#+author: tsandrini\n")
-     ;;  :unnarrowed t)
-     ("z" "zotero" plain (file "~/org/templates/zotero_template.org")
-      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: :Zotero:Reading:Attachment:\n#+date: %U\n#+author: tsandrini\n")
-      :unnarrowed t)
-     ("r" "repository" plain (file "~/org/templates/repository_template.org")
-      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: :ComputerScience:Repository:\n#+date: %U\n#+author: tsandrini\n")
-      :unnarrowed t)
-     ("c" "course" plain (file "~/org/templates/course_template.org")
-      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: :Course:\n#+date: %U\n#+author: tsandrini\n")
-      :unnarrowed t)
-     )
-   )
-  :config
-  (org-roam-db-autosync-mode))
+ (use-package! org-roam
+   :init
+   :custom
+   (org-roam-directory "~/org/")
+   (org-roam-complete-everywhere t)
+   (org-roam-capture-templates
+    '(("d" "default" plain (file "~/org/templates/default_template.org")
+       :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+date: %U\n#+author: tsandrini\n")
+       :unnarrowed t)
+      ("w" "wiki" plain (file "~/org/templates/wiki_template.org")
+       :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: :Wiki:\n#+date: %U\n#+author: tsandrini\n")
+       :unnarrowed t)
+      ("f" "definition" plain (file "~/org/templates/definition_template.org")
+       :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: :Definition:Wiki:\n#+date: %U\n#+author: tsandrini\n")
+       :unnarrowed t)
+      ("h" "theorem" plain (file "~/org/templates/theorem_template.org")
+       :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: :Theorem:Wiki:\n#+date: %U\n#+author: tsandrini\n")
+       :unnarrowed t)
+      ;; ("a" "axiom" plain (file "~/org/templates/axiom_template.org")
+      ;;  :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: :Axiom:Wiki:\n#+date: %U\n#+author: tsandrini\n")
+      ;;  :unnarrowed t)
+      ("a" "algorithm" plain (file "~/org/templates/algorithm_template.org")
+       :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: :Algorithm:Wiki:ComputerScience:\n#+date: %U\n#+author: tsandrini\n")
+       :unnarrowed t)
+      ("e" "attachment" plain (file "~/org/templates/attachment_template.org")
+       :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: :Attachment:\n#+date: %U\n#+author: tsandrini\n")
+       :unnarrowed t)
+      ;; ("r" "reading" plain (file "~/org/templates/reading_template.org")
+      ;;  :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: :Reading:Attachment:\n#+date: %U\n#+author: tsandrini\n")
+      ;;  :unnarrowed t)
+      ;; ("g" "watching" plain (file "~/org/templates/watching_template.org")
+      ;;  :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: :Watching:Attachment:\n#+date: %U\n#+author: tsandrini\n")
+      ;;  :unnarrowed t)
+      ("z" "zotero" plain (file "~/org/templates/zotero_template.org")
+       :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: :Zotero:Reading:Attachment:\n#+date: %U\n#+author: tsandrini\n")
+       :unnarrowed t)
+      ("r" "repository" plain (file "~/org/templates/repository_template.org")
+       :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: :ComputerScience:Repository:\n#+date: %U\n#+author: tsandrini\n")
+       :unnarrowed t)
+      ("c" "course" plain (file "~/org/templates/course_template.org")
+       :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: :Course:\n#+date: %U\n#+author: tsandrini\n")
+       :unnarrowed t)
+      )
+    )
+   :config
+   (org-roam-db-autosync-mode))
 
-(use-package! websocket
-    :after org-roam)
+ (use-package! websocket
+   :after org-roam)
 
-(use-package! org-roam-ui
-    :after org-roam ;; or :after org
-;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
-;;         a hookable mode anymore, you're advised to pick something yourself
-;;         if you don't care about startup time, use
-;;  :hook (after-init . org-roam-ui-mode)
-    :config
-    (setq org-roam-ui-sync-theme t
-          org-roam-ui-follow t
-          org-roam-ui-update-on-save t
-          org-roam-ui-open-on-start t))
+ (use-package! org-roam-ui
+   :after org-roam ;; or :after org
+   ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+   ;;         a hookable mode anymore, you're advised to pick something yourself
+   ;;         if you don't care about startup time, use
+   ;;  :hook (after-init . org-roam-ui-mode)
+   :config
+   (setq org-roam-ui-sync-theme t
+         org-roam-ui-follow t
+         org-roam-ui-update-on-save t
+         org-roam-ui-open-on-start t))
 
 (defun afs/org-replace-all-links-by-description (&optional start end)
   "Find all org links and replace by their descriptions."
@@ -273,13 +272,13 @@
                              "** Notes"
                              "** References")
                   :children ( ("Personal TODO" :keys "t"
-                              :todo-state "TODO")
-                             ("Personal NEXT" :keys "n"
-                              :todo-state "NEXT")
-                             ("Personal PROG" :keys "p"
-                              :todo-state "PROG")
-                             ("Personal INTR" :keys "i"
-                              :todo-state "INTR")))
+                               :todo-state "TODO")
+                              ("Personal NEXT" :keys "n"
+                               :todo-state "NEXT")
+                              ("Personal PROG" :keys "p"
+                               :todo-state "PROG")
+                              ("Personal INTR" :keys "i"
+                               :todo-state "INTR")))
                 ( "Work (PešekMudra) TODO" :keys "w"
                   :icon (":glasses:" :set "github" :color "green")
                   :prepend t
@@ -388,10 +387,7 @@
 
 
 (use-package! nix-mode
-  :hook (nix-mode . lsp-deferred)
-  :ensure t)
-
-(use-package! kbd-mode)
+  :hook (nix-mode . lsp-deferred))
 
 ;; (add-hook 'tuareg-mode-hook #'merlin-mode)
 ;; (add-hook 'caml-mode-hook #'merlin-mode)
