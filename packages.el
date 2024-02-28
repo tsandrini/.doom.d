@@ -59,6 +59,7 @@
 ;;(package! org-super-agenda)
 ;; (package! emacsql-sqlite)
 (package! leetcode)
+(package! good-scroll)
 
 ;; Fun stuff :)
 

@@ -81,6 +81,8 @@
   ;; Some weird hack to prevent evil-snipe remapping the s/S vim keys
   (evil-snipe-mode -1))
 
+(good-scroll-mode 1)
+
 ;; Treemacs settings
 (after! treemacs
   (defun treemacs-visit-node-no-split-and-quit (&optional arg)
